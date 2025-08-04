@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <p>You have high privileges to manage catalog data.</p>
+  <div id="books"></div>
+  <script>
+    async function loadBooks() {
+      const res = await fetch('/odata/v4/admin/Books');
+      if (res.ok) {
+        const data = await res.json();
+        const list = data.value.map(b => `<li>${b.title} (stock: ${b.stock})</li>`).join('');
+        document.getElementById('books').innerHTML = `<h2>Books</h2><ul>${list}</ul>`;
+      } else {
+        document.getElementById('books').textContent = 'Failed to load books';
+      }
+    }
+    loadBooks();
+  </script>
+</body>
+</html>

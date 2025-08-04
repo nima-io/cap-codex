@@ -7,6 +7,11 @@ A simple CAP project for experimenting with the SAP Cloud Application Programmin
 Mock data for a sample bookshop is available in `db/data` and includes authors, books,
 customers, orders and order items for local viewing and testing.
 
+## Admin UI
+
+An administrative dashboard is available at `/admin/`.  It surfaces the full set of
+catalog entities and requires the `ADMIN` role for service access.
+
 ## Running
 
 Install dependencies and start the service:
