@@ -15,3 +15,5 @@ Install dependencies and start the service:
 npm install
 npm start
 ```
+
+Once running, browse the OData V4 service at <http://localhost:4004/odata/v4/catalog/> to view authors, books, customers, orders and order items.
