@@ -23,10 +23,18 @@ entity Customers : managed {
   orders : Composition of many Orders on orders.customer = $self;
 }
 
+type OrderStatus : String enum {
+  NEW;
+  PROCESSING;
+  SHIPPED;
+  CANCELLED;
+}
+
 entity Orders : managed {
   key ID : UUID;
   customer : Association to Customers;
   items  : Composition of many OrderItems on items.parent = $self;
+  status : OrderStatus default 'NEW';
 }
 
 entity OrderItems : managed {

@@ -1,10 +1,14 @@
 <mvc:View
   controllerName="admin.controller.Main"
   xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m">
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
   <App id="app">
     <pages>
       <Page title="{i18n>title}">
+        <headerContent>
+          <Button text="{i18n>save}" press=".onSave" />
+        </headerContent>
         <content>
           <IconTabBar expandable="false">
             <items>
@@ -36,7 +40,7 @@
                       <cells>
                         <Text text="{ID}"/>
                         <Text text="{title}"/>
-                        <Text text="{stock}"/>
+                        <Input value="{stock}" type="Number" />
                       </cells>
                     </ColumnListItem>
                   </items>
@@ -63,12 +67,21 @@
                   <columns>
                     <Column><Text text="ID"/></Column>
                     <Column><Text text="{i18n>customer}"/></Column>
+                    <Column><Text text="{i18n>status}"/></Column>
                   </columns>
                   <items>
                     <ColumnListItem>
                       <cells>
                         <Text text="{ID}"/>
                         <Text text="{customer_ID}"/>
+                        <Select selectedKey="{status}">
+                          <items>
+                            <core:Item key="NEW" text="{i18n>statusNew}"/>
+                            <core:Item key="PROCESSING" text="{i18n>statusProcessing}"/>
+                            <core:Item key="SHIPPED" text="{i18n>statusShipped}"/>
+                            <core:Item key="CANCELLED" text="{i18n>statusCancelled}"/>
+                          </items>
+                        </Select>
                       </cells>
                     </ColumnListItem>
                   </items>
