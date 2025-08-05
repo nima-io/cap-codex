@@ -3,6 +3,7 @@ using { bookshop as db } from '../db/schema';
 @protocol: 'odata-v4'
 service AdminService {
   entity Authors   as projection on db.Authors;
+  @odata.draft.enabled
   entity Books     as projection on db.Books;
   entity Customers as projection on db.Customers actions {
     action contact(subject : String, message : String) returns String;
