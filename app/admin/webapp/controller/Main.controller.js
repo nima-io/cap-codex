@@ -10,11 +10,16 @@ sap.ui.define([
 
     onBookPress: function(oEvent) {
       const id = oEvent.getSource().getBindingContext().getProperty("ID");
-      this.getOwnerComponent().getRouter().navTo("bookDetail", { ID: id });
+      this.getOwnerComponent().getRouter().navTo("bookDetail", {
+        ID: id,
+        layout: "TwoColumnsMidExpanded"
+      });
     },
 
     onAddBook: function() {
-      this.getOwnerComponent().getRouter().navTo("bookCreate");
+      this.getOwnerComponent().getRouter().navTo("bookCreate", {
+        layout: "TwoColumnsMidExpanded"
+      });
     }
   });
 });

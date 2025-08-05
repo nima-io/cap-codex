@@ -7,6 +7,7 @@ framework:
   version: "1.120.0"
   libraries:
     - name: sap.m
+    - name: sap.f
     - name: sap.fe.templates
     - name: sap.fe.core
     - name: sap.ui.core

@@ -20,6 +20,7 @@ sap.ui.define([
       const oListBinding = oModel.bindList("/Books");
       const oContext = oListBinding.create();
       this.getView().setBindingContext(oContext);
+      this._oCreatedContext = oContext;
     },
 
     onSave: function() {
@@ -40,7 +41,12 @@ sap.ui.define([
     },
 
     onNavBack: function() {
-      this.getOwnerComponent().getRouter().navTo("main");
+      if (this._oCreatedContext && this._oCreatedContext.isTransient()) {
+        this._oCreatedContext.delete();
+      }
+      this.getOwnerComponent().getRouter().navTo("main", {
+        layout: "OneColumn"
+      });
     }
   });
 });

@@ -22,7 +22,8 @@
       "minUI5Version": "1.120.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.layout": {}
+        "sap.ui.layout": {},
+        "sap.f": {}
       }
     },
     "models": {
@@ -50,37 +51,42 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
+        "routerClass": "sap.f.routing.Router",
         "viewType": "XML",
         "viewPath": "admin.view",
-        "controlId": "app",
-        "controlAggregation": "pages",
+        "controlId": "fcl",
+        "controlAggregation": "beginColumnPages",
         "async": true
       },
       "routes": [
         {
           "pattern": "",
           "name": "main",
-          "target": "Main"
+          "target": ["Main"],
+          "layout": "OneColumn"
         },
         {
           "pattern": "Books/{ID}",
           "name": "bookDetail",
-          "target": "Book"
+          "target": ["Main", "Book"],
+          "layout": "TwoColumnsMidExpanded"
         },
         {
           "pattern": "Books/create",
           "name": "bookCreate",
-          "target": "Book"
+          "target": ["Main", "Book"],
+          "layout": "TwoColumnsMidExpanded"
         }
       ],
       "targets": {
         "Main": {
-          "viewName": "Main"
+          "viewName": "Main",
+          "controlAggregation": "beginColumnPages"
         },
         "Book": {
           "viewName": "Book",
-          "viewId": "book"
+          "viewId": "book",
+          "controlAggregation": "midColumnPages"
         }
       }
     }
