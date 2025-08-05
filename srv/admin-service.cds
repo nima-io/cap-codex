@@ -8,3 +8,8 @@ service AdminService {
   entity Orders    as projection on db.Orders;
   entity OrderItems as projection on db.OrderItems;
 }
+
+annotate AdminService.Authors with @UI.LineItem: [
+  { Value: ID },
+  { Value: name }
+];
