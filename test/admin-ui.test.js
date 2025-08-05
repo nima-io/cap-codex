@@ -12,18 +12,9 @@ test('Admin UI renders authors list with data', async () => {
   const page = await context.newPage();
   await page.goto(`${srv.url}/admin/webapp/index.html`, { waitUntil: 'networkidle' });
 
-  // allow UI to settle
-  await page.waitForTimeout(1000);
-
-  // ensure data is loaded
-  const goButton = page.getByRole('button', { name: 'Go' });
-  await goButton.click({ force: true });
-
-  // ensure folder for screenshots exists
-  fs.mkdirSync('test-results', { recursive: true });
-
-  // wait for author data to appear
+  // allow UI to settle and load data
   await page.waitForSelector('text=Primo Levi', { timeout: 10000 });
+  fs.mkdirSync('test-results', { recursive: true });
   await page.screenshot({ path: 'test-results/admin-authors-list.png', fullPage: true });
 
   const text = await page.locator('body').innerText();

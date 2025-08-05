@@ -8,11 +8,33 @@
             data-sap-ui-theme="sap_horizon"
             data-sap-ui-language="en"
             data-sap-ui-async="true"
-            data-sap-ui-resourceroots='{"admin": "./"}'
-            data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
-            data-sap-ui-libs="sap.m,sap.fe.templates,sap.fe.core"></script>
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-oninit="initApp"></script>
+    <script>
+        function initApp() {
+            sap.ui.require([
+                "sap/ui/model/odata/v4/ODataModel",
+                "sap/m/List",
+                "sap/m/StandardListItem"
+            ], function (ODataModel, List, StandardListItem) {
+                const oModel = new ODataModel({
+                    serviceUrl: "/odata/v4/admin/",
+                    synchronizationMode: "None",
+                    updateGroupId: "update",
+                    groupId: "$auto",
+                    metadataUrlParams: { "$format": "application/xml" }
+                });
+                const oList = new List({
+                    items: {
+                        path: "/Authors",
+                        template: new StandardListItem({ title: "{name}" })
+                    }
+                });
+                oList.setModel(oModel);
+                oList.placeAt("content");
+            });
+        }
+    </script>
 </head>
-<body class="sapUiBody" id="content">
-    <div data-sap-ui-component data-name="admin" data-id="container" data-settings='{"id":"admin"}'></div>
-</body>
+<body class="sapUiBody" id="content"></body>
 </html>
