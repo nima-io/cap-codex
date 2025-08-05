@@ -1,4 +1,4 @@
-ID;name;email
-46e1f4a1-673f-41de-beb1-5a4cc0b41b61;Alice Johnson;alice.johnson@example.com
-c3051d93-6534-483b-ad49-c97840fc2f72;Bob Smith;bob.smith@example.com
-cdf9c2bb-510a-47e8-831b-587088b1fd3c;Carol Peters;carol.peters@example.com
+ID;name;email;phone;loyaltyTier
+46e1f4a1-673f-41de-beb1-5a4cc0b41b61;Alice Johnson;alice.johnson@example.com;555-0100;GOLD
+c3051d93-6534-483b-ad49-c97840fc2f72;Bob Smith;bob.smith@example.com;555-0101;SILVER
+cdf9c2bb-510a-47e8-831b-587088b1fd3c;Carol Peters;carol.peters@example.com;555-0102;BRONZE
