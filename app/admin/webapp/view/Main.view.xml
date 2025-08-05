@@ -39,6 +39,13 @@
                     <Column><Text text="ID"/></Column>
                     <Column><Text text="{i18n>titleColumn}"/></Column>
                     <Column><Text text="{i18n>stock}"/></Column>
+                    <Column><Text text="{i18n>price}"/></Column>
+                    <Column><Text text="{i18n>author}"/></Column>
+                    <Column><Text text="{i18n>publisher}"/></Column>
+                    <Column><Text text="{i18n>category}"/></Column>
+                    <Column><Text text="{i18n>format}"/></Column>
+                    <Column><Text text="{i18n>isFeatured}"/></Column>
+                    <Column><Text text="{i18n>bestsellerRank}"/></Column>
                   </columns>
                   <items>
                     <ColumnListItem type="Navigation" press=".onBookPress">
@@ -46,6 +53,13 @@
                         <Text text="{ID}"/>
                         <Text text="{title}"/>
                         <Input value="{stock}" type="Number" />
+                        <Input value="{price}" type="Number" />
+                        <Text text="{author.name}"/>
+                        <Text text="{publisher.name}"/>
+                        <Text text="{category.name}"/>
+                        <Text text="{format.name}"/>
+                        <CheckBox selected="{isFeatured}"/>
+                        <Text text="{bestsellerRank}"/>
                       </cells>
                     </ColumnListItem>
                   </items>

@@ -15,6 +15,18 @@
         <Input value="{stock}" type="Number"/>
         <Label text="{i18n>price}"/>
         <Input value="{price}" type="Number"/>
+        <Label text="{i18n>author}"/>
+        <Text text="{author.name}"/>
+        <Label text="{i18n>publisher}"/>
+        <Text text="{publisher.name}"/>
+        <Label text="{i18n>category}"/>
+        <Text text="{category.name}"/>
+        <Label text="{i18n>format}"/>
+        <Text text="{format.name}"/>
+        <Label text="{i18n>isFeatured}"/>
+        <CheckBox selected="{isFeatured}"/>
+        <Label text="{i18n>bestsellerRank}"/>
+        <Input value="{bestsellerRank}" type="Number"/>
       </form:SimpleForm>
     </content>
     <footer>
