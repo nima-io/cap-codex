@@ -4,7 +4,7 @@
   xmlns="sap.m"
   xmlns:form="sap.ui.layout.form"
 >
-  <Page title="{i18n>bookDetailTitle}" showNavButton="true" navButtonPress=".onNavBack">
+  <Page title="{= ${title} ? ${title} : ${i18n>bookDetailTitle} }" showNavButton="true" navButtonPress=".onNavBack">
     <content>
       <form:SimpleForm id="form" editable="true">
         <Label text="ID"/>

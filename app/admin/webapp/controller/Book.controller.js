@@ -12,13 +12,14 @@ sap.ui.define([
 
     _onObjectMatched: function(oEvent) {
       const id = oEvent.getParameter("arguments").ID;
-      this.getView().bindElement({ path: `/Books(${id})` });
+      const path = `/Books(ID=guid'${id}',IsActiveEntity=true)`;
+      this.getView().bindElement({ path });
     },
 
     _onCreateMatched: function() {
       const oModel = this.getView().getModel();
       const oListBinding = oModel.bindList("/Books");
-      const oContext = oListBinding.create();
+      const oContext = oListBinding.create({ IsActiveEntity: true });
       this.getView().setBindingContext(oContext);
     },
 

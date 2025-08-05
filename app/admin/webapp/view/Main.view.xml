@@ -27,7 +27,7 @@
                 </Table>
               </IconTabFilter>
               <IconTabFilter text="{i18n>books}" key="books">
-                <Table id="booksTable" items="{/Books}">
+                <Table id="booksTable" items="{path:'/Books', parameters:{$filter:'IsActiveEntity eq true'}}">
                   <headerToolbar>
                     <Toolbar>
                       <Title text="{i18n>books}"/>
@@ -39,13 +39,15 @@
                     <Column><Text text="ID"/></Column>
                     <Column><Text text="{i18n>titleColumn}"/></Column>
                     <Column><Text text="{i18n>stock}"/></Column>
+                    <Column><Text text="{i18n>price}"/></Column>
                   </columns>
                   <items>
                     <ColumnListItem type="Navigation" press=".onBookPress">
                       <cells>
                         <Text text="{ID}"/>
                         <Text text="{title}"/>
-                        <Input value="{stock}" type="Number" />
+                        <Text text="{stock}"/>
+                        <Text text="{price}"/>
                       </cells>
                     </ColumnListItem>
                   </items>
