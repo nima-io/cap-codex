@@ -48,7 +48,7 @@
                     <Column><Text text="{i18n>bestsellerRank}"/></Column>
                   </columns>
                   <items>
-                    <ColumnListItem type="Navigation" press=".onBookPress">
+                    <ColumnListItem type="Navigation" press=".onBookPress" templateShareable="false">
                       <cells>
                         <Text text="{ID}"/>
                         <Text text="{title}"/>
