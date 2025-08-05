@@ -1,0 +1,83 @@
+<mvc:View
+  controllerName="admin.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <App id="app">
+    <pages>
+      <Page title="{i18n>title}">
+        <content>
+          <IconTabBar expandable="false">
+            <items>
+              <IconTabFilter text="{i18n>authors}" key="authors">
+                <Table items="{/Authors}">
+                  <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="{i18n>name}"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{ID}"/>
+                        <Text text="{name}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+              <IconTabFilter text="{i18n>books}" key="books">
+                <Table items="{/Books}">
+                  <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="{i18n>titleColumn}"/></Column>
+                    <Column><Text text="{i18n>stock}"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{ID}"/>
+                        <Text text="{title}"/>
+                        <Text text="{stock}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+              <IconTabFilter text="{i18n>customers}" key="customers">
+                <Table items="{/Customers}">
+                  <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="{i18n>name}"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{ID}"/>
+                        <Text text="{name}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+              <IconTabFilter text="{i18n>orders}" key="orders">
+                <Table items="{/Orders}">
+                  <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="{i18n>customer}"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{ID}"/>
+                        <Text text="{customer_ID}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+            </items>
+          </IconTabBar>
+        </content>
+      </Page>
+    </pages>
+  </App>
+</mvc:View>

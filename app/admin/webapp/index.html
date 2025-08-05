@@ -2,38 +2,24 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>Admin Dashboard</title>
     <script id="sap-ui-bootstrap"
             src="https://ui5.sap.com/resources/sap-ui-core.js"
             data-sap-ui-theme="sap_horizon"
-            data-sap-ui-language="en"
             data-sap-ui-async="true"
             data-sap-ui-libs="sap.m"
-            data-sap-ui-oninit="initApp"></script>
+            data-sap-ui-resourceroots='{"admin": "./"}'>
+    </script>
     <script>
-        function initApp() {
-            sap.ui.require([
-                "sap/ui/model/odata/v4/ODataModel",
-                "sap/m/List",
-                "sap/m/StandardListItem"
-            ], function (ODataModel, List, StandardListItem) {
-                const oModel = new ODataModel({
-                    serviceUrl: "/odata/v4/admin/",
-                    synchronizationMode: "None",
-                    updateGroupId: "update",
-                    groupId: "$auto",
-                    metadataUrlParams: { "$format": "application/xml" }
-                });
-                const oList = new List({
-                    items: {
-                        path: "/Authors",
-                        template: new StandardListItem({ title: "{name}" })
-                    }
-                });
-                oList.setModel(oModel);
-                oList.placeAt("content");
+        sap.ui.getCore().attachInit(function () {
+            sap.ui.require(["sap/ui/core/ComponentContainer"], function (ComponentContainer) {
+                new ComponentContainer({
+                    name: "admin",
+                    settings: { id: "admin" },
+                    async: true
+                }).placeAt("content");
             });
-        }
+        });
     </script>
 </head>
 <body class="sapUiBody" id="content"></body>
