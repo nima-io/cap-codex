@@ -4,5 +4,8 @@ sap.ui.define([
   "use strict";
 
   return Controller.extend("admin.controller.Main", {
+    onSave: function() {
+      this.getView().getModel().submitBatch("$auto");
+    }
   });
 });
