@@ -53,11 +53,11 @@
                         <Text text="{ID}"/>
                         <Text text="{title}"/>
                         <Input value="{stock}" type="Number" />
-                        <Input value="{price}" type="Number" />
-                        <Text text="{author.name}"/>
-                        <Text text="{publisher.name}"/>
-                        <Text text="{category.name}"/>
-                        <Text text="{format.name}"/>
+                        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints:{ precision:9, scale:2 } }"/>
+                        <Text text="{author/name}"/>
+                        <Text text="{publisher/name}"/>
+                        <Text text="{category/name}"/>
+                        <Text text="{format/name}"/>
                         <CheckBox selected="{isFeatured}"/>
                         <Text text="{bestsellerRank}"/>
                       </cells>

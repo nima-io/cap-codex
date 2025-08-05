@@ -14,15 +14,15 @@
         <Label text="{i18n>stock}"/>
         <Input value="{stock}" type="Number"/>
         <Label text="{i18n>price}"/>
-        <Input value="{price}" type="Number"/>
+        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints:{ precision:9, scale:2 } }"/>
         <Label text="{i18n>author}"/>
-        <Text text="{author.name}"/>
+        <Text text="{author/name}"/>
         <Label text="{i18n>publisher}"/>
-        <Text text="{publisher.name}"/>
+        <Text text="{publisher/name}"/>
         <Label text="{i18n>category}"/>
-        <Text text="{category.name}"/>
+        <Text text="{category/name}"/>
         <Label text="{i18n>format}"/>
-        <Text text="{format.name}"/>
+        <Text text="{format/name}"/>
         <Label text="{i18n>isFeatured}"/>
         <CheckBox selected="{isFeatured}"/>
         <Label text="{i18n>bestsellerRank}"/>
