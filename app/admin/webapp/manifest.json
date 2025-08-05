@@ -21,7 +21,8 @@
     "dependencies": {
       "minUI5Version": "1.120.0",
       "libs": {
-        "sap.m": {}
+        "sap.m": {},
+        "sap.ui.layout": {}
       }
     },
     "models": {
@@ -42,10 +43,47 @@
       }
     },
     "rootView": {
-      "viewName": "admin.view.Main",
+      "viewName": "admin.view.App",
       "type": "XML",
       "async": true,
-      "id": "main"
+      "id": "app"
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "admin.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "main",
+          "target": "Main"
+        },
+        {
+          "pattern": "Books/{ID}",
+          "name": "bookDetail",
+          "target": "Book"
+        },
+        {
+          "pattern": "Books/create",
+          "name": "bookCreate",
+          "target": "Book"
+        }
+      ],
+      "targets": {
+        "Main": {
+          "viewName": "Main"
+        },
+        "Book": {
+          "viewName": "Book",
+          "viewId": "book"
+        }
+      }
     }
   }
 }
+

@@ -3,15 +3,13 @@
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m"
   xmlns:core="sap.ui.core">
-  <App id="app">
-    <pages>
-      <Page title="{i18n>title}">
-        <headerContent>
-          <Button text="{i18n>save}" press=".onSave" />
-        </headerContent>
-        <content>
-          <IconTabBar expandable="false">
-            <items>
+  <Page title="{i18n>title}">
+    <headerContent>
+      <Button text="{i18n>save}" press=".onSave" />
+    </headerContent>
+    <content>
+      <IconTabBar expandable="false">
+        <items>
               <IconTabFilter text="{i18n>authors}" key="authors">
                 <Table items="{/Authors}">
                   <columns>
@@ -29,14 +27,21 @@
                 </Table>
               </IconTabFilter>
               <IconTabFilter text="{i18n>books}" key="books">
-                <Table items="{/Books}">
+                <Table id="booksTable" items="{/Books}">
+                  <headerToolbar>
+                    <Toolbar>
+                      <Title text="{i18n>books}"/>
+                      <ToolbarSpacer/>
+                      <Button icon="sap-icon://add" tooltip="{i18n>add}" press=".onAddBook"/>
+                    </Toolbar>
+                  </headerToolbar>
                   <columns>
                     <Column><Text text="ID"/></Column>
                     <Column><Text text="{i18n>titleColumn}"/></Column>
                     <Column><Text text="{i18n>stock}"/></Column>
                   </columns>
                   <items>
-                    <ColumnListItem>
+                    <ColumnListItem type="Navigation" press=".onBookPress">
                       <cells>
                         <Text text="{ID}"/>
                         <Text text="{title}"/>
@@ -91,6 +96,4 @@
           </IconTabBar>
         </content>
       </Page>
-    </pages>
-  </App>
 </mvc:View>
