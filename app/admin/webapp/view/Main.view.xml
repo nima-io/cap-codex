@@ -52,8 +52,8 @@
                       <cells>
                         <Text text="{ID}"/>
                         <Text text="{title}"/>
-                        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32', targetType: 'string' }" type="Number" />
-                        <Text text="{price}"/>
+                        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32', targetType: 'any' }" type="Number" />
+                        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', targetType: 'any' }" type="Number"/>
                         <Text text="{author/name}"/>
                         <Text text="{publisher/name}"/>
                         <Text text="{category/name}"/>
