@@ -4,6 +4,13 @@ const { INSERT, SELECT } = cds.ql;
 module.exports = cds.service.impl(function () {
   const { Returns } = this.entities;
 
+  // Ensure newly created Books have a UUID if not provided
+  this.before('CREATE', 'Books', (req) => {
+    if (!req.data.ID) {
+      req.data.ID = cds.utils.uuid();
+    }
+  });
+
   this.on('contact', 'Customers', async (req) => {
     const { subject, message } = req.data;
     const { ID } = req.params[0];
