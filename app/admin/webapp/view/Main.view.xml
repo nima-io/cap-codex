@@ -48,18 +48,18 @@
                     <Column><Text text="{i18n>bestsellerRank}"/></Column>
                   </columns>
                   <items>
-                    <ColumnListItem type="Navigation" press=".onBookPress" templateShareable="false">
+                    <ColumnListItem type="Navigation" press=".onBookPress">
                       <cells>
-                        <Text text="{ID}"/>
-                        <Text text="{title}"/>
-                        <Input value="{stock}" type="Number" />
-                        <Input value="{price}" type="Number"/>
-                        <Text text="{author/name}"/>
-                        <Text text="{publisher/name}"/>
-                        <Text text="{category/name}"/>
-                        <Text text="{format/name}"/>
-                        <CheckBox selected="{isFeatured}"/>
-                        <Text text="{bestsellerRank}"/>
+                        <Text text="{ path: 'ID' }"/>
+                        <Text text="{ path: 'title' }"/>
+                        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32', targetType: 'string' }" type="Number" />
+                        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 }, targetType: 'string' }" type="Number"/>
+                        <Text text="{ path: 'author/name' }"/>
+                        <Text text="{ path: 'publisher/name' }"/>
+                        <Text text="{ path: 'category/name' }"/>
+                        <Text text="{ path: 'format/name' }"/>
+                        <CheckBox selected="{ path: 'isFeatured' }"/>
+                        <Text text="{ path: 'bestsellerRank', type: 'sap.ui.model.odata.type.Int32', targetType: 'string' }"/>
                       </cells>
                     </ColumnListItem>
                   </items>
