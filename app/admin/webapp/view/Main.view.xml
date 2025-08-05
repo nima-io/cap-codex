@@ -52,7 +52,7 @@
                       <cells>
                         <Text text="{ID}"/>
                         <Text text="{title}"/>
-                        <Input value="{stock}" type="Number" />
+                        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32', targetType: 'string' }" type="Number" />
                         <Text text="{price}"/>
                         <Text text="{author/name}"/>
                         <Text text="{publisher/name}"/>

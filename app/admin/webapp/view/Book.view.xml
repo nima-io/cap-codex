@@ -12,9 +12,9 @@
         <Label text="{i18n>titleColumn}"/>
         <Input value="{title}"/>
         <Label text="{i18n>stock}"/>
-        <Input value="{stock}" type="Number"/>
+        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32', targetType: 'string' }" type="Number"/>
         <Label text="{i18n>price}"/>
-        <Input value="{price}" type="Number"/>
+        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', targetType: 'string' }" type="Number"/>
         <Label text="{i18n>author}"/>
         <Text text="{author/name}"/>
         <Label text="{i18n>publisher}"/>
@@ -26,7 +26,7 @@
         <Label text="{i18n>isFeatured}"/>
         <CheckBox selected="{isFeatured}"/>
         <Label text="{i18n>bestsellerRank}"/>
-        <Input value="{bestsellerRank}" type="Number"/>
+        <Input value="{ path: 'bestsellerRank', type: 'sap.ui.model.odata.type.Int32', targetType: 'string' }" type="Number"/>
       </form:SimpleForm>
     </content>
     <footer>
