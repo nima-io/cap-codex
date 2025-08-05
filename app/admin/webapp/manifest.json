@@ -1,0 +1,51 @@
+{
+  "sap.app": {
+    "id": "admin",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{title}}",
+    "dataSources": {
+      "adminService": {
+        "uri": "/odata/v4/admin/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5"
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "adminService",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "groupId": "$auto",
+          "autoExpandSelect": true
+        }
+      },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "admin.i18n.i18n"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "admin.view.Main",
+      "type": "XML",
+      "async": true,
+      "id": "main"
+    }
+  }
+}
