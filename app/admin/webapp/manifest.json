@@ -16,13 +16,17 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.120.0",
       "libs": {
         "sap.fe.templates": {},
+        "sap.fe.core": {},
+        "sap.fe.macros": {},
         "sap.f": {},
-        "sap.m": {}
+        "sap.m": {},
+        "sap.ui.fl": {},
+        "sap.ui.mdc": {}
       }
     },
     "models": {
@@ -44,7 +48,6 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.fe.core.Router",
         "controlId": "app",
         "controlAggregation": "pages",
         "viewType": "XML",
