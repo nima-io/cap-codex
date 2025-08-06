@@ -4,6 +4,7 @@ using { bookshop as db } from '../db/schema';
 service AdminService {
   entity Authors   as projection on db.Authors;
   @odata.draft.enabled
+  @odata.draft.bypass
   entity Books     as projection on db.Books;
   entity Customers as projection on db.Customers actions {
     action contact(subject : String, message : String) returns String;
