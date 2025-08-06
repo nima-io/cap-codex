@@ -18,7 +18,9 @@ sap.ui.define([
     _onCreateMatched: function() {
       const oModel = this.getView().getModel();
       const oListBinding = oModel.bindList("/Books");
-      const oContext = oListBinding.create();
+      const oContext = oListBinding.create({
+        IsActiveEntity: true
+      });
       this.getView().setBindingContext(oContext);
     },
 
