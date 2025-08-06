@@ -1,16 +1,12 @@
 sap.ui.define([
-  "sap/ui/core/UIComponent"
-], function(UIComponent) {
+  "sap/fe/core/AppComponent"
+], function(AppComponent) {
   "use strict";
 
-  return UIComponent.extend("admin.Component", {
+  return AppComponent.extend("admin.Component", {
     metadata: {
       manifest: "json"
-    },
-
-    init: function() {
-      UIComponent.prototype.init.apply(this, arguments);
-      this.getRouter().initialize();
     }
   });
 });
+
