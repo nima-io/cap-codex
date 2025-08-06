@@ -7,7 +7,7 @@
     "description": "{{appDescription}}",
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/admin/",
+        "uri": "/odata/v4/admin",
         "type": "OData",
         "settings": {
           "odataVersion": "4.0"
@@ -43,6 +43,9 @@
       }
     },
     "routing": {
+      "config": {
+        "routerClass": "sap.fe.core.Router"
+      },
       "routes": [
         {
           "pattern": ":?query:",
