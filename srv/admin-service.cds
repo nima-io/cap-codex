@@ -3,8 +3,6 @@ using { bookshop as db } from '../db/schema';
 @protocol: 'odata-v4'
 service AdminService {
   entity Authors    as projection on db.Authors;
-  @odata.draft.enabled
-  @odata.draft.bypass
   entity Books      as projection on db.Books;
   entity Publishers as projection on db.Publishers;
   entity Categories as projection on db.Categories;

@@ -45,7 +45,7 @@
     },
     "routing": {
       "config": {
-        "controlId": "app",
+        "controlId": "appContent",
         "controlAggregation": "pages",
         "viewType": "XML",
         "async": true
