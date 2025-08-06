@@ -44,7 +44,11 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.fe.core.Router"
+        "routerClass": "sap.fe.core.Router",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "viewType": "XML",
+        "async": true
       },
       "routes": [
         {
@@ -67,7 +71,7 @@
             "settings": {
               "entitySet": "Books",
               "navigation": {
-                "BooksObjectPage": {
+                "Books": {
                   "detail": {
                     "route": "BooksObjectPage"
                   }
