@@ -5,6 +5,9 @@ module.exports = cds.service.impl(function () {
   const { Returns } = this.entities;
 
   this.before(['CREATE', 'UPDATE'], 'Books', (req) => {
+    if (req.event === 'CREATE' && !req.data.ID) {
+      req.data.ID = cds.utils.uuid();
+    }
     if (req.data.price !== undefined) {
       const value = typeof req.data.price === 'string' ? parseFloat(req.data.price) : req.data.price;
       if (!Number.isNaN(value)) req.data.price = value;

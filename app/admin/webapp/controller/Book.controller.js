@@ -1,6 +1,7 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller"
-], function(Controller) {
+  "sap/ui/core/mvc/Controller",
+  "sap/base/strings/uuid/v4"
+], function(Controller, uuidv4) {
   "use strict";
 
   return Controller.extend("admin.controller.Book", {
@@ -18,7 +19,10 @@ sap.ui.define([
     _onCreateMatched: function() {
       const oModel = this.getView().getModel();
       const oListBinding = oModel.bindList("/Books");
-      const oContext = oListBinding.create();
+      const oContext = oListBinding.create({
+        ID: uuidv4(),
+        IsActiveEntity: true
+      });
       this.getView().setBindingContext(oContext);
     },
 
