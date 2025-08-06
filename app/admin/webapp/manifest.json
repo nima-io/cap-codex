@@ -22,11 +22,8 @@
       "libs": {
         "sap.fe.templates": {},
         "sap.fe.core": {},
-        "sap.fe.macros": {},
-        "sap.f": {},
         "sap.m": {},
-        "sap.ui.fl": {},
-        "sap.ui.mdc": {}
+        "sap.f": {}
       }
     },
     "models": {
@@ -97,4 +94,3 @@
     }
   }
 }
-

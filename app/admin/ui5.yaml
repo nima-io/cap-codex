@@ -9,4 +9,4 @@ framework:
     - name: sap.m
     - name: sap.fe.templates
     - name: sap.fe.core
-    - name: sap.ui.core
+    - name: sap.f
