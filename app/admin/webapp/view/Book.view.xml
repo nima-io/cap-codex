@@ -14,7 +14,7 @@
         <Label text="{i18n>stock}"/>
         <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32' }" type="Number"/>
         <Label text="{i18n>price}"/>
-        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 }, formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 }, targetType: 'string' }" type="Number"/>
+        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 }, formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 }, targetType: 'string' }"/>
         <Label text="{i18n>author}"/>
         <Text text="{ path: 'author/name' }"/>
         <Label text="{i18n>publisher}"/>

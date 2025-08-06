@@ -53,7 +53,7 @@
                         <Text text="{ path: 'ID' }"/>
                         <Text text="{ path: 'title' }"/>
                         <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32' }" type="Number" />
-                        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 }, formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 }, targetType: 'string' }" type="Number"/>
+                        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 }, formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 }, targetType: 'string' }"/>
                         <Text text="{ path: 'author/name' }"/>
                         <Text text="{ path: 'publisher/name' }"/>
                         <Text text="{ path: 'category/name' }"/>
