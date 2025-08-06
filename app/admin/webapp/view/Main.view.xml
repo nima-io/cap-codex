@@ -52,14 +52,14 @@
                       <cells>
                         <Text text="{ path: 'ID' }"/>
                         <Text text="{ path: 'title' }"/>
-                        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32', targetType: 'string' }" type="Number" />
-                        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 }, targetType: 'string' }" type="Number"/>
+                        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32' }" type="Number" />
+                        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 } }" type="Number"/>
                         <Text text="{ path: 'author/name' }"/>
                         <Text text="{ path: 'publisher/name' }"/>
                         <Text text="{ path: 'category/name' }"/>
                         <Text text="{ path: 'format/name' }"/>
                         <CheckBox selected="{ path: 'isFeatured' }"/>
-                        <Text text="{ path: 'bestsellerRank', type: 'sap.ui.model.odata.type.Int32', targetType: 'string' }"/>
+                        <Text text="{ path: 'bestsellerRank', type: 'sap.ui.model.odata.type.Int32' }"/>
                       </cells>
                     </ColumnListItem>
                   </items>
