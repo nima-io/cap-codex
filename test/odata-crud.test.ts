@@ -1,6 +1,6 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const cds = require('@sap/cds');
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import cds from '@sap/cds';
 
 const { GET, POST, PATCH, DELETE } = cds.test(__dirname + '/..');
 

@@ -32,3 +32,9 @@ mta_archives/
 
 # @cap-js/cds-typer
 @cds-models
+
+# TypeScript build artifacts
+srv/**/*.js
+srv/**/*.d.ts
+test/**/*.js
+test/**/*.d.ts
