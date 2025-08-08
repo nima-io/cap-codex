@@ -50,7 +50,15 @@ annotate AdminService.Authors with @UI: {
 
 annotate AdminService.Books with {
   author @title: 'Author';
-  author @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
+  author @Common.Text: author.name;
+  author @Common.ValueList: {
+    $Type: 'Common.ValueListType',
+    CollectionPath: 'Authors',
+    Parameters: [
+      { $Type: 'Common.ValueListParameterInOut', LocalDataProperty: author_ID, ValueListProperty: ID },
+      { $Type: 'Common.ValueListParameterDisplayOnly', ValueListProperty: name }
+    ]
+  };
   publisher @title: 'Publisher';
   publisher @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Publishers', element: 'ID', labelElement: 'name' }];
   category @title: 'Category';
