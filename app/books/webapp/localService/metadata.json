@@ -1,17 +1,29 @@
 {
   "$Version": "4.0",
-  "$EntityContainer": "BooksService.Container",
-  "BooksService": {
+  "$EntityContainer": "CatalogService.EntityContainer",
+  "CatalogService": {
     "Books": {
       "$kind": "EntityType",
       "$Key": ["ID"],
-      "ID": { "$kind": "Property", "$Type": "Edm.Int32", "Nullable": false },
+      "ID": { "$kind": "Property", "$Type": "Edm.Guid", "Nullable": false },
       "title": { "$kind": "Property", "$Type": "Edm.String" },
-      "author": { "$kind": "Property", "$Type": "Edm.String" }
+      "author_ID": { "$kind": "Property", "$Type": "Edm.Guid" },
+      "author": {
+        "$kind": "NavigationProperty",
+        "$Type": "CatalogService.Authors",
+        "$ReferentialConstraint": { "author_ID": "ID" }
+      }
     },
-    "Container": {
+    "Authors": {
+      "$kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": { "$kind": "Property", "$Type": "Edm.Guid", "Nullable": false },
+      "name": { "$kind": "Property", "$Type": "Edm.String" }
+    },
+    "EntityContainer": {
       "$kind": "EntityContainer",
-      "Books": { "$Type": "BooksService.Books", "$kind": "EntitySet" }
+      "Books": { "$Type": "CatalogService.Books", "$kind": "EntitySet" },
+      "Authors": { "$Type": "CatalogService.Authors", "$kind": "EntitySet" }
     }
   }
 }

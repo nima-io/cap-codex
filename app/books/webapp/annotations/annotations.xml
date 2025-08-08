@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-  <edmx:Reference Uri="https://sapui5.hana.ondemand.com/test-resources/sap/ui/core/sample/common/metadata/edm14_metadata.xml">
-    <edmx:Include Namespace="BooksService" />
+  <edmx:Reference Uri="../localService/metadata.json">
+    <edmx:Include Namespace="CatalogService" />
   </edmx:Reference>
   <edmx:DataServices>
-    <Schema Namespace="BooksService">
-      <Annotations Target="BooksService.Books">
+    <Schema Namespace="CatalogService">
+      <Annotations Target="CatalogService.Books">
         <Annotation Term="UI.LineItem">
           <Collection>
             <Record Type="UI.DataField">
@@ -17,7 +17,7 @@
             </Record>
             <Record Type="UI.DataField">
               <PropertyValue Property="Label" String="{i18n>author}"/>
-              <PropertyValue Property="Value" Path="author"/>
+              <PropertyValue Property="Value" Path="author/name"/>
             </Record>
           </Collection>
         </Annotation>
@@ -39,7 +39,7 @@
                 </Record>
                 <Record Type="UI.DataField">
                   <PropertyValue Property="Label" String="{i18n>author}"/>
-                  <PropertyValue Property="Value" Path="author"/>
+                  <PropertyValue Property="Value" Path="author/name"/>
                 </Record>
               </Collection>
             </PropertyValue>

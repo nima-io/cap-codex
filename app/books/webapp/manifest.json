@@ -53,7 +53,8 @@
         "preload": true,
         "settings": {
           "synchronizationMode": "None",
-          "operationMode": "Server"
+          "operationMode": "Server",
+          "autoExpandSelect": true
         }
       }
     },
