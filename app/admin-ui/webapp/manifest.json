@@ -1,0 +1,441 @@
+{
+  "sap.app": {
+    "id": "admin.ui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/admin/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true
+        }
+      },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "admin.ui.i18n.i18n"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.fe.core.Router",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "viewPath": "sap.fe.templates",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "BooksList",
+          "pattern": ":?query:",
+          "target": "BooksList"
+        },
+        {
+          "name": "AuthorsList",
+          "pattern": "Authors:?query:",
+          "target": "AuthorsList"
+        },
+        {
+          "name": "AuthorsObjectPage",
+          "pattern": "Authors({key}):?query:",
+          "target": "AuthorsObjectPage"
+        },
+        {
+          "name": "BooksList",
+          "pattern": "Books:?query:",
+          "target": "BooksList"
+        },
+        {
+          "name": "BooksObjectPage",
+          "pattern": "Books({key}):?query:",
+          "target": "BooksObjectPage"
+        },
+        {
+          "name": "CustomersList",
+          "pattern": "Customers:?query:",
+          "target": "CustomersList"
+        },
+        {
+          "name": "CustomersObjectPage",
+          "pattern": "Customers({key}):?query:",
+          "target": "CustomersObjectPage"
+        },
+        {
+          "name": "OrdersList",
+          "pattern": "Orders:?query:",
+          "target": "OrdersList"
+        },
+        {
+          "name": "OrdersObjectPage",
+          "pattern": "Orders({key}):?query:",
+          "target": "OrdersObjectPage"
+        },
+        {
+          "name": "OrderItemsList",
+          "pattern": "OrderItems:?query:",
+          "target": "OrderItemsList"
+        },
+        {
+          "name": "OrderItemsObjectPage",
+          "pattern": "OrderItems({key}):?query:",
+          "target": "OrderItemsObjectPage"
+        },
+        {
+          "name": "ReturnsList",
+          "pattern": "Returns:?query:",
+          "target": "ReturnsList"
+        },
+        {
+          "name": "ReturnsObjectPage",
+          "pattern": "Returns({key}):?query:",
+          "target": "ReturnsObjectPage"
+        },
+        {
+          "name": "PublishersList",
+          "pattern": "Publishers:?query:",
+          "target": "PublishersList"
+        },
+        {
+          "name": "PublishersObjectPage",
+          "pattern": "Publishers({key}):?query:",
+          "target": "PublishersObjectPage"
+        },
+        {
+          "name": "CategoriesList",
+          "pattern": "Categories:?query:",
+          "target": "CategoriesList"
+        },
+        {
+          "name": "CategoriesObjectPage",
+          "pattern": "Categories({key}):?query:",
+          "target": "CategoriesObjectPage"
+        },
+        {
+          "name": "FormatsList",
+          "pattern": "Formats:?query:",
+          "target": "FormatsList"
+        },
+        {
+          "name": "FormatsObjectPage",
+          "pattern": "Formats({key}):?query:",
+          "target": "FormatsObjectPage"
+        },
+        {
+          "name": "TagsList",
+          "pattern": "Tags:?query:",
+          "target": "TagsList"
+        },
+        {
+          "name": "TagsObjectPage",
+          "pattern": "Tags({key}):?query:",
+          "target": "TagsObjectPage"
+        },
+        {
+          "name": "ReviewsList",
+          "pattern": "Reviews:?query:",
+          "target": "ReviewsList"
+        },
+        {
+          "name": "ReviewsObjectPage",
+          "pattern": "Reviews({key}):?query:",
+          "target": "ReviewsObjectPage"
+        },
+        {
+          "name": "PromotionsList",
+          "pattern": "Promotions:?query:",
+          "target": "PromotionsList"
+        },
+        {
+          "name": "PromotionsObjectPage",
+          "pattern": "Promotions({key}):?query:",
+          "target": "PromotionsObjectPage"
+        }
+      ],
+      "targets": {
+        "AuthorsList": {
+          "type": "Component",
+          "id": "AuthorsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Authors",
+              "variantManagement": true
+            }
+          }
+        },
+        "AuthorsObjectPage": {
+          "type": "Component",
+          "id": "AuthorsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Authors"
+            }
+          }
+        },
+        "BooksList": {
+          "type": "Component",
+          "id": "BooksList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Books",
+              "variantManagement": true
+            }
+          }
+        },
+        "BooksObjectPage": {
+          "type": "Component",
+          "id": "BooksObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Books"
+            }
+          }
+        },
+        "CustomersList": {
+          "type": "Component",
+          "id": "CustomersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Customers",
+              "variantManagement": true
+            }
+          }
+        },
+        "CustomersObjectPage": {
+          "type": "Component",
+          "id": "CustomersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Customers"
+            }
+          }
+        },
+        "OrdersList": {
+          "type": "Component",
+          "id": "OrdersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Orders",
+              "variantManagement": true
+            }
+          }
+        },
+        "OrdersObjectPage": {
+          "type": "Component",
+          "id": "OrdersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Orders"
+            }
+          }
+        },
+        "OrderItemsList": {
+          "type": "Component",
+          "id": "OrderItemsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "OrderItems",
+              "variantManagement": true
+            }
+          }
+        },
+        "OrderItemsObjectPage": {
+          "type": "Component",
+          "id": "OrderItemsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "OrderItems"
+            }
+          }
+        },
+        "ReturnsList": {
+          "type": "Component",
+          "id": "ReturnsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Returns",
+              "variantManagement": true
+            }
+          }
+        },
+        "ReturnsObjectPage": {
+          "type": "Component",
+          "id": "ReturnsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Returns"
+            }
+          }
+        },
+        "PublishersList": {
+          "type": "Component",
+          "id": "PublishersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Publishers",
+              "variantManagement": true
+            }
+          }
+        },
+        "PublishersObjectPage": {
+          "type": "Component",
+          "id": "PublishersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Publishers"
+            }
+          }
+        },
+        "CategoriesList": {
+          "type": "Component",
+          "id": "CategoriesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Categories",
+              "variantManagement": true
+            }
+          }
+        },
+        "CategoriesObjectPage": {
+          "type": "Component",
+          "id": "CategoriesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Categories"
+            }
+          }
+        },
+        "FormatsList": {
+          "type": "Component",
+          "id": "FormatsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Formats",
+              "variantManagement": true
+            }
+          }
+        },
+        "FormatsObjectPage": {
+          "type": "Component",
+          "id": "FormatsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Formats"
+            }
+          }
+        },
+        "TagsList": {
+          "type": "Component",
+          "id": "TagsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Tags",
+              "variantManagement": true
+            }
+          }
+        },
+        "TagsObjectPage": {
+          "type": "Component",
+          "id": "TagsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Tags"
+            }
+          }
+        },
+        "ReviewsList": {
+          "type": "Component",
+          "id": "ReviewsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Reviews",
+              "variantManagement": true
+            }
+          }
+        },
+        "ReviewsObjectPage": {
+          "type": "Component",
+          "id": "ReviewsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Reviews"
+            }
+          }
+        },
+        "PromotionsList": {
+          "type": "Component",
+          "id": "PromotionsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Promotions",
+              "variantManagement": true
+            }
+          }
+        },
+        "PromotionsObjectPage": {
+          "type": "Component",
+          "id": "PromotionsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Promotions"
+            }
+          }
+        }
+      }
+    }
+  }
+}
