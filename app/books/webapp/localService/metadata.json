@@ -1,0 +1,17 @@
+{
+  "$Version": "4.0",
+  "$EntityContainer": "BooksService.Container",
+  "BooksService": {
+    "Books": {
+      "$kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": { "$kind": "Property", "$Type": "Edm.Int32", "Nullable": false },
+      "title": { "$kind": "Property", "$Type": "Edm.String" },
+      "author": { "$kind": "Property", "$Type": "Edm.String" }
+    },
+    "Container": {
+      "$kind": "EntityContainer",
+      "Books": { "$Type": "BooksService.Books", "$kind": "EntitySet" }
+    }
+  }
+}
