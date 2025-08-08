@@ -1,0 +1,25 @@
+{
+  "$Version": "4.0",
+  "$EntityContainer": "AdminService",
+  "definitions": {
+    "Employees": {
+      "kind": "entity",
+      "key": ["ID"],
+      "elements": {
+        "ID": {"type": "cds.UUID"},
+        "firstName": {"type": "cds.String"},
+        "lastName": {"type": "cds.String"},
+        "email": {"type": "cds.String"},
+        "department": {"type": "cds.Association", "target": "Departments"}
+      }
+    },
+    "Departments": {
+      "kind": "entity",
+      "key": ["ID"],
+      "elements": {
+        "ID": {"type": "cds.UUID"},
+        "name": {"type": "cds.String"}
+      }
+    }
+  }
+}

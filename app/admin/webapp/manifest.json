@@ -1,11 +1,13 @@
 {
+  "_version": "1.56.0",
   "sap.app": {
     "id": "admin",
     "type": "application",
     "i18n": "i18n/i18n.properties",
-    "title": "{{title}}",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
     "dataSources": {
-      "adminService": {
+      "mainService": {
         "uri": "/odata/v4/admin/",
         "type": "OData",
         "settings": {
@@ -15,24 +17,25 @@
     }
   },
   "sap.ui": {
-    "technology": "UI5"
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://employee"
+    }
   },
   "sap.ui5": {
     "dependencies": {
-      "minUI5Version": "1.120.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.layout": {}
+        "sap.fe.templates": {}
       }
     },
     "models": {
       "": {
-        "dataSource": "adminService",
+        "dataSource": "mainService",
+        "preload": true,
         "settings": {
           "synchronizationMode": "None",
-          "operationMode": "Server",
-          "groupId": "$auto",
-          "autoExpandSelect": true
+          "operationMode": "Server"
         }
       },
       "i18n": {
@@ -42,48 +45,48 @@
         }
       }
     },
-    "rootView": {
-      "viewName": "admin.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "app"
-    },
     "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "viewType": "XML",
-        "viewPath": "admin.view",
-        "controlId": "app",
-        "controlAggregation": "pages",
-        "async": true
-      },
       "routes": [
         {
-          "pattern": "",
-          "name": "main",
-          "target": "Main"
+          "pattern": ":?query:",
+          "name": "EmployeesList",
+          "target": "EmployeesList"
         },
         {
-          "pattern": "Books/{ID}",
-          "name": "bookDetail",
-          "target": "Book"
-        },
-        {
-          "pattern": "Books/create",
-          "name": "bookCreate",
-          "target": "Book"
+          "pattern": "Employees({key}):?query:",
+          "name": "EmployeesObjectPage",
+          "target": "EmployeesObjectPage"
         }
       ],
       "targets": {
-        "Main": {
-          "viewName": "Main"
+        "EmployeesList": {
+          "type": "Component",
+          "id": "EmployeesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Employees",
+              "variantManagement": "Page",
+              "tableSettings": {
+                "type": "ResponsiveTable",
+                "multiSelect": true,
+                "personalization": true,
+                "enableExport": true
+              }
+            }
+          }
         },
-        "Book": {
-          "viewName": "Book",
-          "viewId": "book"
+        "EmployeesObjectPage": {
+          "type": "Component",
+          "id": "EmployeesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Employees"
+            }
+          }
         }
       }
     }
   }
 }
-
