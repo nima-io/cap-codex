@@ -1,12 +1,13 @@
 {
+  "_version": "1.40.0",
   "sap.app": {
     "id": "admin",
     "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "title": "{{title}}",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
     "dataSources": {
-      "adminService": {
-        "uri": "/odata/v4/admin/",
+      "mainService": {
+        "uri": "/admin/",
         "type": "OData",
         "settings": {
           "odataVersion": "4.0"
@@ -14,25 +15,28 @@
       }
     }
   },
-  "sap.ui": {
-    "technology": "UI5"
-  },
   "sap.ui5": {
     "dependencies": {
       "minUI5Version": "1.120.0",
       "libs": {
         "sap.m": {},
-        "sap.ui.layout": {}
+        "sap.fe.templates": {},
+        "sap.ui.export": {}
       }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
     },
     "models": {
       "": {
-        "dataSource": "adminService",
+        "dataSource": "mainService",
+        "preload": true,
         "settings": {
           "synchronizationMode": "None",
           "operationMode": "Server",
-          "groupId": "$auto",
-          "autoExpandSelect": true
+          "autoExpandSelect": true,
+          "earlyRequests": true
         }
       },
       "i18n": {
@@ -42,48 +46,64 @@
         }
       }
     },
-    "rootView": {
-      "viewName": "admin.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "app"
-    },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
-        "viewType": "XML",
-        "viewPath": "admin.view",
-        "controlId": "app",
-        "controlAggregation": "pages",
-        "async": true
+        "routerClass": "sap.fe.core.Router"
       },
       "routes": [
         {
-          "pattern": "",
-          "name": "main",
-          "target": "Main"
+          "pattern": ":?query:",
+          "name": "BooksList",
+          "target": "BooksList"
         },
         {
-          "pattern": "Books/{ID}",
-          "name": "bookDetail",
-          "target": "Book"
-        },
-        {
-          "pattern": "Books/create",
-          "name": "bookCreate",
-          "target": "Book"
+          "pattern": "Books({key}):?query:",
+          "name": "BooksObjectPage",
+          "target": "BooksObjectPage"
         }
       ],
       "targets": {
-        "Main": {
-          "viewName": "Main"
+        "BooksList": {
+          "type": "Component",
+          "id": "BooksList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Books",
+              "navigation": {
+                "Books": {
+                  "detail": {
+                    "route": "BooksObjectPage"
+                  }
+                }
+              },
+              "tableSettings": {
+                "type": "ResponsiveTable",
+                "selectionMode": "Multi",
+                "personalization": {
+                  "column": true,
+                  "sort": true,
+                  "filter": true,
+                  "group": true
+                },
+                "export": {
+                  "fileName": "{{booksExportFileName}}"
+                }
+              }
+            }
+          }
         },
-        "Book": {
-          "viewName": "Book",
-          "viewId": "book"
+        "BooksObjectPage": {
+          "type": "Component",
+          "id": "BooksObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Books"
+            }
+          }
         }
       }
     }
   }
 }
-

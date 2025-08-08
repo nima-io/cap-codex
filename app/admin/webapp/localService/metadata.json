@@ -1,0 +1,23 @@
+{
+  "$Version": "4.0",
+  "entitySets": {
+    "Books": {
+      "name": "Books",
+      "entityType": "AdminService.Books"
+    }
+  },
+  "definitions": {
+    "AdminService.Books": {
+      "kind": "EntityType",
+      "key": ["ID", "IsActiveEntity"],
+      "properties": {
+        "ID": { "type": "Edm.UUID" },
+        "IsActiveEntity": { "type": "Edm.Boolean" },
+        "title": { "type": "Edm.String" },
+        "author": { "type": "Edm.String" },
+        "stock": { "type": "Edm.Int32" },
+        "price": { "type": "Edm.Decimal" }
+      }
+    }
+  }
+}
