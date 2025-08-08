@@ -1,0 +1,41 @@
+<mvc:View
+  controllerName="admin.controller.Book"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:form="sap.ui.layout.form"
+>
+  <Page title="{i18n>bookDetailTitle}" showNavButton="true" navButtonPress=".onNavBack">
+    <content>
+      <form:SimpleForm id="form" editable="true">
+        <Label text="ID"/>
+        <Text text="{ID}"/>
+        <Label text="{i18n>titleColumn}"/>
+        <Input value="{ path: 'title' }"/>
+        <Label text="{i18n>stock}"/>
+        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32' }" type="Number"/>
+        <Label text="{i18n>price}"/>
+        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 }, formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 }, targetType: 'string' }"/>
+        <Label text="{i18n>author}"/>
+        <Text text="{ path: 'author/name' }"/>
+        <Label text="{i18n>publisher}"/>
+        <Text text="{ path: 'publisher/name' }"/>
+        <Label text="{i18n>category}"/>
+        <Text text="{ path: 'category/name' }"/>
+        <Label text="{i18n>format}"/>
+        <Text text="{ path: 'format/name' }"/>
+        <Label text="{i18n>isFeatured}"/>
+        <CheckBox selected="{ path: 'isFeatured' }"/>
+        <Label text="{i18n>bestsellerRank}"/>
+        <Input value="{ path: 'bestsellerRank', type: 'sap.ui.model.odata.type.Int32' }" type="Number"/>
+      </form:SimpleForm>
+    </content>
+    <footer>
+      <Toolbar>
+        <ToolbarSpacer/>
+        <Button text="{i18n>save}" press=".onSave"/>
+        <Button text="{i18n>delete}" type="Reject" press=".onDelete"/>
+      </Toolbar>
+    </footer>
+  </Page>
+</mvc:View>
+

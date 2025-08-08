@@ -1,0 +1,113 @@
+<mvc:View
+  controllerName="admin.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <Page title="{i18n>title}">
+    <headerContent>
+      <Button text="{i18n>save}" press=".onSave" />
+    </headerContent>
+    <content>
+      <IconTabBar expandable="false">
+        <items>
+              <IconTabFilter text="{i18n>authors}" key="authors">
+                <Table items="{/Authors}">
+                  <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="{i18n>name}"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{ID}"/>
+                        <Text text="{name}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+              <IconTabFilter text="{i18n>books}" key="books">
+                <Table id="booksTable" items="{/Books}">
+                  <headerToolbar>
+                    <Toolbar>
+                      <Title text="{i18n>books}"/>
+                      <ToolbarSpacer/>
+                      <Button icon="sap-icon://add" tooltip="{i18n>add}" press=".onAddBook"/>
+                    </Toolbar>
+                  </headerToolbar>
+                  <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="{i18n>titleColumn}"/></Column>
+                    <Column><Text text="{i18n>stock}"/></Column>
+                    <Column><Text text="{i18n>price}"/></Column>
+                    <Column><Text text="{i18n>author}"/></Column>
+                    <Column><Text text="{i18n>publisher}"/></Column>
+                    <Column><Text text="{i18n>category}"/></Column>
+                    <Column><Text text="{i18n>format}"/></Column>
+                    <Column><Text text="{i18n>isFeatured}"/></Column>
+                    <Column><Text text="{i18n>bestsellerRank}"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem templateShareable="false" type="Navigation" press=".onBookPress">
+                      <cells>
+                        <Text text="{ path: 'ID' }"/>
+                        <Text text="{ path: 'title' }"/>
+                        <Input value="{ path: 'stock', type: 'sap.ui.model.odata.type.Int32' }" type="Number" />
+                        <Input value="{ path: 'price', type: 'sap.ui.model.odata.type.Decimal', constraints: { precision: 9, scale: 2 }, formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 }, targetType: 'string' }"/>
+                        <Text text="{ path: 'author/name' }"/>
+                        <Text text="{ path: 'publisher/name' }"/>
+                        <Text text="{ path: 'category/name' }"/>
+                        <Text text="{ path: 'format/name' }"/>
+                        <CheckBox selected="{ path: 'isFeatured' }"/>
+                        <Text text="{ path: 'bestsellerRank', type: 'sap.ui.model.odata.type.Int32' }"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+              <IconTabFilter text="{i18n>customers}" key="customers">
+                <Table items="{/Customers}">
+                  <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="{i18n>name}"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{ID}"/>
+                        <Text text="{name}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+              <IconTabFilter text="{i18n>orders}" key="orders">
+                <Table items="{/Orders}">
+                  <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="{i18n>customer}"/></Column>
+                    <Column><Text text="{i18n>status}"/></Column>
+                  </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{ID}"/>
+                        <Text text="{customer_ID}"/>
+                        <Select selectedKey="{status}">
+                          <items>
+                            <core:Item key="NEW" text="{i18n>statusNew}"/>
+                            <core:Item key="PROCESSING" text="{i18n>statusProcessing}"/>
+                            <core:Item key="SHIPPED" text="{i18n>statusShipped}"/>
+                            <core:Item key="CANCELLED" text="{i18n>statusCancelled}"/>
+                          </items>
+                        </Select>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+                </Table>
+              </IconTabFilter>
+            </items>
+          </IconTabBar>
+        </content>
+      </Page>
+</mvc:View>

@@ -18,10 +18,6 @@ service AdminService {
   entity Categories as projection on db.Categories;
   entity Formats as projection on db.Formats;
   entity Tags as projection on db.Tags;
-  entity Departments as projection on db.Departments;
-  @odata.draft.enabled
-  @odata.draft.bypass
-  entity Employees as projection on db.Employees;
   entity Reviews as projection on db.Reviews;
   entity Promotions as projection on db.Promotions;
 }
@@ -47,19 +43,19 @@ annotate AdminService.Authors with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>AuthorDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Author Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ name ]
 };
 
 annotate AdminService.Books with {
-  author @title: '{i18n>Author}';
+  author @title: 'Author';
   author @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
-  publisher @title: '{i18n>Publisher}';
+  publisher @title: 'Publisher';
   publisher @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Publishers', element: 'ID', labelElement: 'name' }];
-  category @title: '{i18n>Category}';
+  category @title: 'Category';
   category @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Categories', element: 'ID', labelElement: 'name' }];
-  format @title: '{i18n>Format}';
+  format @title: 'Format';
   format @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Formats', element: 'ID', labelElement: 'name' }];
 };
 
@@ -70,7 +66,7 @@ annotate AdminService.Books with @UI: {
   LineItem: [
     { Value: ID },
     { Value: title },
-    { Value: author, Label: '{i18n>Author}' },
+    { Value: author, Label: 'Author' },
     { Value: price },
     { Value: stock }
   ],
@@ -94,8 +90,8 @@ annotate AdminService.Books with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>General}', Target: '@UI.FieldGroup#General' },
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>Classification}', Target: '@UI.FieldGroup#Classification' }
+    { $Type: 'UI.ReferenceFacet', Label: 'General', Target: '@UI.FieldGroup#General' },
+    { $Type: 'UI.ReferenceFacet', Label: 'Classification', Target: '@UI.FieldGroup#Classification' }
   ],
   SelectionFields: [ title, author, category ]
 };
@@ -120,13 +116,13 @@ annotate AdminService.Customers with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>CustomerDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Customer Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ name, email, loyaltyTier ]
 };
 
 annotate AdminService.Orders with {
-  customer @title: '{i18n>Customer}';
+  customer @title: 'Customer';
   customer @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Customers', element: 'ID', labelElement: 'name' }];
 };
 
@@ -136,7 +132,7 @@ annotate AdminService.Orders with @UI: {
   ],
   LineItem: [
     { Value: ID },
-    { Value: customer, Label: '{i18n>Customer}' },
+    { Value: customer, Label: 'Customer' },
     { Value: status }
   ],
   FieldGroup #General: {
@@ -148,15 +144,15 @@ annotate AdminService.Orders with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>OrderDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Order Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ ID, customer, status ]
 };
 
 annotate AdminService.OrderItems with {
-  parent @title: '{i18n>Order}';
+  parent @title: 'Order';
   parent @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Orders', element: 'ID', labelElement: 'ID' }];
-  book @title: '{i18n>Book}';
+  book @title: 'Book';
   book @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Books', element: 'ID', labelElement: 'title' }];
 };
 
@@ -166,9 +162,9 @@ annotate AdminService.OrderItems with @UI: {
     { Value: lineNo }
   ],
   LineItem: [
-    { Value: parent, Label: '{i18n>Order}' },
+    { Value: parent, Label: 'Order' },
     { Value: lineNo },
-    { Value: book, Label: '{i18n>Book}' },
+    { Value: book, Label: 'Book' },
     { Value: quantity },
     { Value: netAmount }
   ],
@@ -183,13 +179,13 @@ annotate AdminService.OrderItems with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>OrderItem}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Order Item', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ parent, book ]
 };
 
 annotate AdminService.Returns with {
-  orderItem @title: '{i18n>OrderItem}';
+  orderItem @title: 'Order Item';
   orderItem @Consumption.valueHelpDefinition: [{ entity: 'AdminService.OrderItems', element: 'parent' }];
 };
 
@@ -199,7 +195,7 @@ annotate AdminService.Returns with @UI: {
   ],
   LineItem: [
     { Value: ID },
-    { Value: orderItem, Label: '{i18n>OrderItem}' },
+    { Value: orderItem, Label: 'Order Item' },
     { Value: status },
     { Value: refundAmount }
   ],
@@ -213,7 +209,7 @@ annotate AdminService.Returns with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>ReturnDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Return Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ status ]
 };
@@ -233,7 +229,7 @@ annotate AdminService.Publishers with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>PublisherDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Publisher Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ name ]
 };
@@ -253,7 +249,7 @@ annotate AdminService.Categories with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>CategoryDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Category Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ name ]
 };
@@ -273,7 +269,7 @@ annotate AdminService.Formats with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>FormatDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Format Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ name ]
 };
@@ -293,15 +289,15 @@ annotate AdminService.Tags with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>TagDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Tag Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ name ]
 };
 
 annotate AdminService.Reviews with {
-  book @title: '{i18n>Book}';
+  book @title: 'Book';
   book @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Books', element: 'ID', labelElement: 'title' }];
-  customer @title: '{i18n>Customer}';
+  customer @title: 'Customer';
   customer @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Customers', element: 'ID', labelElement: 'name' }];
 };
 
@@ -311,8 +307,8 @@ annotate AdminService.Reviews with @UI: {
   ],
   LineItem: [
     { Value: ID },
-    { Value: book, Label: '{i18n>Book}' },
-    { Value: customer, Label: '{i18n>Customer}' },
+    { Value: book, Label: 'Book' },
+    { Value: customer, Label: 'Customer' },
     { Value: rating }
   ],
   FieldGroup #General: {
@@ -325,13 +321,13 @@ annotate AdminService.Reviews with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>ReviewDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Review Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ book, customer ]
 };
 
 annotate AdminService.Promotions with {
-  book @title: '{i18n>Book}';
+  book @title: 'Book';
   book @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Books', element: 'ID', labelElement: 'title' }];
 };
 
@@ -346,7 +342,7 @@ annotate AdminService.Promotions with @UI: {
     { Value: discountPercentage },
     { Value: startDate },
     { Value: endDate },
-    { Value: book, Label: '{i18n>Book}' }
+    { Value: book, Label: 'Book' }
   ],
   FieldGroup #General: {
     $Type: 'UI.FieldGroupType',
@@ -360,55 +356,7 @@ annotate AdminService.Promotions with @UI: {
     ]
   },
   Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>PromotionDetails}', Target: '@UI.FieldGroup#General' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Promotion Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ description, discountCode, book ]
-};
-
-annotate AdminService.Departments with @UI: {
-  LineItem: [
-    { Value: ID },
-    { Value: name }
-  ],
-  Identification: [
-    { Value: name }
-  ]
-};
-
-annotate AdminService.Employees with {
-  department @title: '{i18n>Department}';
-  department @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Departments', element: 'ID', labelElement: 'name' }];
-};
-
-annotate AdminService.Employees with @UI: {
-  Identification: [
-    { Value: firstName },
-    { Value: lastName }
-  ],
-  LineItem: [
-    { Value: ID },
-    { Value: firstName, Label: '{i18n>FirstName}' },
-    { Value: lastName, Label: '{i18n>LastName}' },
-    { Value: department, Label: '{i18n>Department}' },
-    { Value: email, Label: '{i18n>Email}' }
-  ],
-  FieldGroup #General: {
-    $Type: 'UI.FieldGroupType',
-    Data: [
-      { $Type: 'UI.DataField', Value: firstName },
-      { $Type: 'UI.DataField', Value: lastName },
-      { $Type: 'UI.DataField', Value: department }
-    ]
-  },
-  FieldGroup #Contact: {
-    $Type: 'UI.FieldGroupType',
-    Data: [
-      { $Type: 'UI.DataField', Value: email }
-    ]
-  },
-  Facets: [
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>FacetGeneral}', Target: '@UI.FieldGroup#General' },
-    { $Type: 'UI.ReferenceFacet', Label: '{i18n>FacetContact}', Target: '@UI.FieldGroup#Contact' }
-  ],
-  SelectionFields: [ firstName, lastName, department ]
 };

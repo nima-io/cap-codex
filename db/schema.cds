@@ -121,18 +121,3 @@ entity OrderItems : managed {
   quantity : Integer;
   netAmount : Decimal(9,2);
 }
-
-entity Departments : managed {
-  key ID : UUID;
-  name   : String(100);
-  employees : Composition of many Employees on employees.department = $self;
-}
-
-entity Employees : managed {
-  key ID : UUID;
-  firstName : String(100);
-  lastName  : String(100);
-  email     : String(255);
-  department: Association to Departments;
-}
-
