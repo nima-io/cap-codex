@@ -75,11 +75,9 @@ annotate AdminService.Authors with @UI: {
 
 annotate AdminService.Books with {
   author @title: 'Author';
+  author @Common.Text: name;
+  author @Common.TextArrangement: #TextOnly;
   author @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
-  author_ID @title: 'Author';
-  author_ID @Common.Text: author.name;
-  author_ID @Common.TextArrangement: #TextOnly;
-  author_ID @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
   publisher @title: 'Publisher';
   publisher @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Publishers', element: 'ID', labelElement: 'name' }];
   category @title: 'Category';
@@ -95,7 +93,7 @@ annotate AdminService.Books with @UI: {
   LineItem: [
     { Value: ID },
     { Value: title },
-    { Value: author_ID, Label: 'Author' },
+    { Value: author.name, Label: 'Author' },
     { Value: price },
     { Value: stock }
   ],
@@ -112,7 +110,7 @@ annotate AdminService.Books with @UI: {
   FieldGroup #Classification: {
     $Type: 'UI.FieldGroupType',
     Data: [
-      { $Type: 'UI.DataField', Value: author_ID },
+      { $Type: 'UI.DataField', Value: author },
       { $Type: 'UI.DataField', Value: publisher },
       { $Type: 'UI.DataField', Value: category },
       { $Type: 'UI.DataField', Value: format }

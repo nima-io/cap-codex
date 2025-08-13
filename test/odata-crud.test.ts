@@ -38,11 +38,12 @@ test('OData CRUD operations for Books entity', async () => {
     category_ID: '44444444-4444-4444-4444-444444444444'
   });
   assert.equal(res.status, 200);
-  res = await GET(`/odata/v4/admin/Books(ID=${id},IsActiveEntity=true)`);
+  res = await GET(`/odata/v4/admin/Books(ID=${id},IsActiveEntity=true)?$expand=author($select=name)`);
   assert.equal(res.data.title, 'Updated Book');
   assert.equal(res.data.stock, 7);
   assert.equal(Number(res.data.price), 10.5);
   assert.equal(res.data.author_ID, '0228ee7a-7cae-41ee-b33b-91746536e33c');
+  assert.equal(res.data.author.name, 'Jane Austen');
   assert.equal(res.data.category_ID, '44444444-4444-4444-4444-444444444444');
 
   // Delete
