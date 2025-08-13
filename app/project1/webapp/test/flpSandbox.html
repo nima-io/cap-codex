@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html>
 <!-- Copyright (c) 2015 SAP AG, All Rights Reserved -->
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,8 +45,8 @@
             },
             applications: {
                 "project1-tile": {
-                    title: "Book management",
-                    description: "An SAP Fiori application.",
+                    title: "{{appTitle}}",
+                    description: "{{appDescription}}",
                     additionalInformation: "SAPUI5.Component=project1",
                     applicationType: "URL",
                     url: "../"
@@ -64,13 +64,16 @@
         data-sap-ui-preload="async"
         data-sap-ui-theme="sap_horizon"
         data-sap-ui-compatVersion="edge"
-        data-sap-ui-language="en"
         data-sap-ui-resourceroots='{"project1": "../"}'
         data-sap-ui-frameOptions="allow"
         data-sap-ui-flexibilityServices='[{"connector": "LocalStorageConnector"}]'>
     </script>
     <script>
         sap.ui.getCore().attachInit(function () {
+            var bundle = sap.ui.getCore().getLibraryResourceBundle('project1');
+            var tile = window["sap-ushell-config"].applications["project1-tile"];
+            tile.title = bundle.getText('appTitle');
+            tile.description = bundle.getText('appDescription');
             sap.ushell.Container.createRenderer().placeAt("content");
         });
     </script>

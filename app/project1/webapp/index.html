@@ -22,6 +22,12 @@
         data-sap-ui-async="true"
         data-sap-ui-frameOptions="trusted"
     ></script>
+    <script>
+        window.addEventListener('load', function () {
+            var bundle = sap.ui.getCore().getLibraryResourceBundle('project1');
+            document.title = bundle.getText('appTitle');
+        });
+    </script>
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div
