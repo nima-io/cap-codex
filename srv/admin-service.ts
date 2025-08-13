@@ -35,7 +35,7 @@ export default cds.service.impl(function (this: Service) {
       const { subject, message } = req.data;
       const { ID } = req.params[0] as { ID: string };
       console.log(`Contacting customer ${ID}: ${subject} - ${message}`);
-      return "Message sent";
+      return cds.i18n.messages.at("contact.messageSent", req.user?.locale);
     }
   );
 
