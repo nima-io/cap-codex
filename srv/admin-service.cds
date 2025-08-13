@@ -78,6 +78,7 @@ annotate AdminService.Books with {
   author @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
   author_ID @title: 'Author';
   author_ID @Common.Text: author.name;
+  author_ID @Common.TextArrangement: #TextOnly;
   author_ID @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
   publisher @title: 'Publisher';
   publisher @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Publishers', element: 'ID', labelElement: 'name' }];
@@ -94,7 +95,7 @@ annotate AdminService.Books with @UI: {
   LineItem: [
     { Value: ID },
     { Value: title },
-    { Value: author, Label: 'Author' },
+    { Value: author_ID, Label: 'Author' },
     { Value: price },
     { Value: stock }
   ],
