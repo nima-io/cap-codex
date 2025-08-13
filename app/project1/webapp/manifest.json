@@ -103,6 +103,7 @@
             "settings": {
               "contextPath": "/Books",
               "variantManagement": "Page",
+              "initialLoad": true,
               "navigation": {
                 "Books": {
                   "detail": {
