@@ -29,12 +29,21 @@ test('OData CRUD operations for Books entity', async () => {
   assert.equal(res.data.IsActiveEntity, true);
   assert.equal(Number(res.data.price), 11.99);
 
-  // Update
-  res = await PATCH(`/odata/v4/admin/Books(ID=${id},IsActiveEntity=true)`, { stock: 7, price: '10.50' });
+  // Update general and classification information
+  res = await PATCH(`/odata/v4/admin/Books(ID=${id},IsActiveEntity=true)`, {
+    stock: 7,
+    price: '10.50',
+    title: 'Updated Book',
+    author_ID: '0228ee7a-7cae-41ee-b33b-91746536e33c',
+    category_ID: '44444444-4444-4444-4444-444444444444'
+  });
   assert.equal(res.status, 200);
   res = await GET(`/odata/v4/admin/Books(ID=${id},IsActiveEntity=true)`);
+  assert.equal(res.data.title, 'Updated Book');
   assert.equal(res.data.stock, 7);
   assert.equal(Number(res.data.price), 10.5);
+  assert.equal(res.data.author_ID, '0228ee7a-7cae-41ee-b33b-91746536e33c');
+  assert.equal(res.data.category_ID, '44444444-4444-4444-4444-444444444444');
 
   // Delete
   res = await DELETE(`/odata/v4/admin/Books(ID=${id},IsActiveEntity=true)`);
