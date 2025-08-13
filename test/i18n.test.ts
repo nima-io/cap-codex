@@ -11,11 +11,19 @@ test('contact action is localized', async () => {
   assert.equal(res.status, 200);
   const id = res.data.value[0].ID;
 
-  res = await POST(`/odata/v4/admin/Customers(ID=${id})/contact`, { subject: 'Hi', message: 'Test' }, { headers: { 'Accept-Language': 'de' } });
+  res = await POST(
+    `/odata/v4/admin/Customers(ID=${id},IsActiveEntity=true)/contact`,
+    { subject: 'Hi', message: 'Test' },
+    { headers: { 'Accept-Language': 'de' } }
+  );
   assert.equal(res.status, 200);
   assert.equal(res.data.value, 'Nachricht gesendet');
 
-  res = await POST(`/odata/v4/admin/Customers(ID=${id})/contact`, { subject: 'Hi', message: 'Test' }, { headers: { 'Accept-Language': 'en' } });
+  res = await POST(
+    `/odata/v4/admin/Customers(ID=${id},IsActiveEntity=true)/contact`,
+    { subject: 'Hi', message: 'Test' },
+    { headers: { 'Accept-Language': 'en' } }
+  );
   assert.equal(res.status, 200);
   assert.equal(res.data.value, 'Message sent');
 });

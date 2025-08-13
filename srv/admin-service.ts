@@ -7,6 +7,7 @@ const { INSERT, SELECT } = cds.ql;
 export default cds.service.impl(function (this: Service) {
   // Short hand to the Returns entity for later use.
   const { Returns } = this.entities;
+  const { Books, Authors } = this.entities;
 
   /**
    * Ensure numeric price values before persisting books.
@@ -38,6 +39,46 @@ export default cds.service.impl(function (this: Service) {
       return cds.i18n.messages.at("contact.messageSent", req.user?.locale);
     }
   );
+
+  /**
+   * Automatically calculate netAmount and update related entities when creating order items.
+   */
+  this.before("CREATE", "OrderItems", async (req: Request) => {
+    const { book_ID, quantity } = req.data as any;
+    if (!book_ID || !quantity) return;
+
+    const book = await SELECT.one
+      .from(Books)
+      .columns("price", "stock", "author_ID")
+      .where({ ID: book_ID });
+    if (!book) req.error(404, `Book ${book_ID} not found`);
+
+    const price = Number(book.price);
+    const net = price * quantity;
+    (req.data as any).netAmount = net;
+
+    await cds
+      .update(Books)
+      .set({ stock: { "-=": quantity } })
+      .where({ ID: book_ID });
+
+    if (book.author_ID) {
+      const author = await SELECT.one
+        .from(Authors)
+        .columns("royaltyRate")
+        .where({ ID: book.author_ID });
+      if (author) {
+        const royalty = (net * Number(author.royaltyRate)) / 100;
+        await cds
+          .update(Authors)
+          .set({
+            totalSales: { "+=": net },
+            totalRoyalty: { "+=": royalty },
+          })
+          .where({ ID: book.author_ID });
+      }
+    }
+  });
 
   /**
    * Custom action to request a return for an order item.

@@ -5,7 +5,16 @@ import cds from '@sap/cds';
 const { GET, POST, PATCH, DELETE } = cds.test(__dirname + '/..');
 
 test('OData CRUD operations for Books entity', async () => {
-  const newBook = { title: 'Test Book', stock: 5, price: '11.99', IsActiveEntity: true };
+  const newBook = {
+    title: 'Test Book',
+    stock: 5,
+    price: '11.99',
+    author_ID: '98bc6893-e48c-46d9-80db-7c5e2cb0abae',
+    publisher_ID: '11111111-1111-1111-1111-111111111111',
+    category_ID: '33333333-3333-3333-3333-333333333333',
+    format_ID: '55555555-5555-5555-5555-555555555555',
+    IsActiveEntity: true,
+  };
 
   // Create without specifying ID to allow backend to generate one
   let res = await POST(`/odata/v4/admin/Books`, newBook);

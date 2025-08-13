@@ -79,13 +79,13 @@ npm run cf:push       # Deploy to Cloud Foundry
 ## 5. Service Information
 
 * **Main OData Endpoint:** `/odata/v4/`
-* **Example service:** `srv/catalog-service.cds`
+* **Example service:** `srv/admin-service.cds`
 
   * Entities: `Books`, `Authors`
 * **Sample Requests:**
 
-  * `GET /odata/v4/catalog/Books?$expand=author`
-  * `POST /odata/v4/catalog/Books` (payload schema defined in `db/schema.cds`)
+  * `GET /odata/v4/admin/Books?$expand=author`
+  * `POST /odata/v4/admin/Books` (payload schema defined in `db/schema.cds`)
 
 ---
 

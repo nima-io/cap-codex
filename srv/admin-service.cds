@@ -2,23 +2,48 @@ using { bookshop as db } from '../db/schema';
 
 @protocol: 'odata-v4'
 service AdminService {
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Authors   as projection on db.Authors;
   @odata.draft.enabled
   @odata.draft.bypass
   entity Books     as projection on db.Books;
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Customers as projection on db.Customers actions {
     action contact(subject : String, message : String) returns String;
   };
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Orders    as projection on db.Orders;
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity OrderItems as projection on db.OrderItems actions {
     action requestReturn(reason : String) returns Returns;
   };
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Returns as projection on db.Returns;
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Publishers as projection on db.Publishers;
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Categories as projection on db.Categories;
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Formats as projection on db.Formats;
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Tags as projection on db.Tags;
+  @odata.draft.enabled
+  @odata.draft.bypass
+  entity BookTags as projection on db.BookTags;
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Reviews as projection on db.Reviews;
+  @odata.draft.enabled
+  @odata.draft.bypass
   entity Promotions as projection on db.Promotions;
 }
 
@@ -91,7 +116,8 @@ annotate AdminService.Books with @UI: {
   },
   Facets: [
     { $Type: 'UI.ReferenceFacet', Label: 'General', Target: '@UI.FieldGroup#General' },
-    { $Type: 'UI.ReferenceFacet', Label: 'Classification', Target: '@UI.FieldGroup#Classification' }
+    { $Type: 'UI.ReferenceFacet', Label: 'Classification', Target: '@UI.FieldGroup#Classification' },
+    { $Type: 'UI.ReferenceFacet', Label: 'Tags', Target: 'tags/@UI.LineItem' }
   ],
   SelectionFields: [ title, author, category ]
 };
@@ -292,6 +318,35 @@ annotate AdminService.Tags with @UI: {
     { $Type: 'UI.ReferenceFacet', Label: 'Tag Details', Target: '@UI.FieldGroup#General' }
   ],
   SelectionFields: [ name ]
+};
+
+annotate AdminService.BookTags with {
+  book @title: 'Book';
+  book @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Books', element: 'ID', labelElement: 'title' }];
+  tag @title: 'Tag';
+  tag @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Tags', element: 'ID', labelElement: 'name' }];
+};
+
+annotate AdminService.BookTags with @UI: {
+  Identification: [
+    { Value: book },
+    { Value: tag }
+  ],
+  LineItem: [
+    { Value: book, Label: 'Book' },
+    { Value: tag, Label: 'Tag' }
+  ],
+  FieldGroup #General: {
+    $Type: 'UI.FieldGroupType',
+    Data: [
+      { $Type: 'UI.DataField', Value: book },
+      { $Type: 'UI.DataField', Value: tag }
+    ]
+  },
+  Facets: [
+    { $Type: 'UI.ReferenceFacet', Label: 'Book Tag', Target: '@UI.FieldGroup#General' }
+  ],
+  SelectionFields: [ book, tag ]
 };
 
 annotate AdminService.Reviews with {

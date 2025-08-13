@@ -16,4 +16,5 @@ npm install
 npm start
 ```
 
-Once running, browse the OData V4 service at <http://localhost:4004/odata/v4/catalog/> to view authors, books, customers, orders and order items.
+Once running, browse the OData V4 service at <http://localhost:4004/odata/v4/admin/> to view authors, books, customers, orders and order items.
+All entities in this service support the OData draft protocol for managing edits.
