@@ -102,6 +102,7 @@
             "settings": {
               "contextPath": "/Books",
               "autoBindOnInit": true,
+              "initialLoad": true,
               "variantManagement": "Page",
               "navigation": {
                 "Books": {
