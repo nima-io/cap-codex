@@ -24,10 +24,6 @@
   "scripts": {
     "build": "tsc",
     "start": "npm run build && cds-serve",
-    "test": "npm run build && node --test test/*.test.js",
-    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "sapux": [
-    "app/project1"
-  ]
+    "test": "npm run build && node --test test/*.test.js"
+  }
 }
