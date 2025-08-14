@@ -32,14 +32,18 @@ annotate AdminService.Authors with @UI: {
 };
 
 annotate AdminService.Books with {
-  author @title: 'Author';
-  author @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
-  publisher @title: 'Publisher';
-  publisher @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Publishers', element: 'ID', labelElement: 'name' }];
-  category @title: 'Category';
-  category @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Categories', element: 'ID', labelElement: 'name' }];
-  format @title: 'Format';
-  format @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Formats', element: 'ID', labelElement: 'name' }];
+  author_ID @title: 'Author';
+  author_ID @Common.Text: author.name;
+  author_ID @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
+  publisher_ID @title: 'Publisher';
+  publisher_ID @Common.Text: publisher.name;
+  publisher_ID @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Publishers', element: 'ID', labelElement: 'name' }];
+  category_ID @title: 'Category';
+  category_ID @Common.Text: category.name;
+  category_ID @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Categories', element: 'ID', labelElement: 'name' }];
+  format_ID @title: 'Format';
+  format_ID @Common.Text: format.name;
+  format_ID @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Formats', element: 'ID', labelElement: 'name' }];
 };
 
 annotate AdminService.Books with @UI: {
@@ -53,10 +57,10 @@ annotate AdminService.Books with @UI: {
   ],
   LineItem: [
     { Value: title },
-    { Value: author, Label: 'Author' },
+    { Value: author_ID, Label: 'Author' },
     { Value: price },
     { Value: stock },
-    { Value: category, Label: 'Category' }
+    { Value: category_ID, Label: 'Category' }
   ],
   FieldGroup #General: {
     $Type: 'UI.FieldGroupType',
@@ -71,10 +75,10 @@ annotate AdminService.Books with @UI: {
   FieldGroup #Classification: {
     $Type: 'UI.FieldGroupType',
     Data: [
-      { $Type: 'UI.DataField', Value: author },
-      { $Type: 'UI.DataField', Value: publisher },
-      { $Type: 'UI.DataField', Value: category },
-      { $Type: 'UI.DataField', Value: format }
+      { $Type: 'UI.DataField', Value: author_ID },
+      { $Type: 'UI.DataField', Value: publisher_ID },
+      { $Type: 'UI.DataField', Value: category_ID },
+      { $Type: 'UI.DataField', Value: format_ID }
     ]
   },
   Facets: [
@@ -82,7 +86,7 @@ annotate AdminService.Books with @UI: {
     { $Type: 'UI.ReferenceFacet', Label: 'Classification', Target: '@UI.FieldGroup#Classification' },
     { $Type: 'UI.ReferenceFacet', Label: 'Tags', Target: 'tags/@UI.LineItem' }
   ],
-  SelectionFields: [ title, author, category ]
+  SelectionFields: [ title, author_ID, category_ID ]
 };
 
 annotate AdminService.Customers with @UI: {
