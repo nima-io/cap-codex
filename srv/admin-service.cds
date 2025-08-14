@@ -74,8 +74,16 @@ annotate AdminService.Authors with @UI: {
 };
 
 annotate AdminService.Books with {
-  author @title: 'Author';
-  author @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Authors', element: 'ID', labelElement: 'name' }];
+  author_ID @title: 'Author';
+  author_ID @Common.Text: author.name;
+  author_ID @Common.TextArrangement: #TextOnly;
+  author_ID @Common.ValueList: {
+    CollectionPath: 'Authors',
+    Parameters: [
+      { $Type: 'Common.ValueListParameterInOut', LocalDataProperty: author_ID, ValueListProperty: 'ID' },
+      { $Type: 'Common.ValueListParameterDisplayOnly', ValueListProperty: 'name' }
+    ]
+  };
   publisher @title: 'Publisher';
   publisher @Consumption.valueHelpDefinition: [{ entity: 'AdminService.Publishers', element: 'ID', labelElement: 'name' }];
   category @title: 'Category';
@@ -91,7 +99,7 @@ annotate AdminService.Books with @UI: {
   LineItem: [
     { Value: ID },
     { Value: title },
-    { Value: author, Label: 'Author' },
+    { Value: author_ID, Label: 'Author' },
     { Value: price },
     { Value: stock }
   ],
@@ -108,7 +116,7 @@ annotate AdminService.Books with @UI: {
   FieldGroup #Classification: {
     $Type: 'UI.FieldGroupType',
     Data: [
-      { $Type: 'UI.DataField', Value: author },
+      { $Type: 'UI.DataField', Value: author_ID, Label: 'Author' },
       { $Type: 'UI.DataField', Value: publisher },
       { $Type: 'UI.DataField', Value: category },
       { $Type: 'UI.DataField', Value: format }
@@ -119,7 +127,7 @@ annotate AdminService.Books with @UI: {
     { $Type: 'UI.ReferenceFacet', Label: 'Classification', Target: '@UI.FieldGroup#Classification' },
     { $Type: 'UI.ReferenceFacet', Label: 'Tags', Target: 'tags/@UI.LineItem' }
   ],
-  SelectionFields: [ title, author, category ]
+  SelectionFields: [ title, author_ID, category ]
 };
 
 annotate AdminService.Customers with @UI: {

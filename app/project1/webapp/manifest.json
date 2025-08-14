@@ -103,6 +103,7 @@
             "settings": {
               "contextPath": "/Books",
               "variantManagement": "Page",
+              "initialLoad": true,
               "navigation": {
                 "Books": {
                   "detail": {
@@ -126,7 +127,7 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "editableHeaderContent": false,
+              "editableHeaderContent": true,
               "contextPath": "/Books"
             }
           }
