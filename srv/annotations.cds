@@ -65,20 +65,20 @@ annotate AdminService.Books with @UI: {
   FieldGroup #General: {
     $Type: 'UI.FieldGroupType',
     Data: [
-      { $Type: 'UI.DataField', Value: title },
-      { $Type: 'UI.DataField', Value: stock },
-      { $Type: 'UI.DataField', Value: price },
-      { $Type: 'UI.DataField', Value: isFeatured },
-      { $Type: 'UI.DataField', Value: bestsellerRank }
+      { $Type: 'UI.DataField', Value: title, Label: 'Title' },
+      { $Type: 'UI.DataField', Value: stock, Label: 'Stock' },
+      { $Type: 'UI.DataField', Value: price, Label: 'Price' },
+      { $Type: 'UI.DataField', Value: isFeatured, Label: 'Featured' },
+      { $Type: 'UI.DataField', Value: bestsellerRank, Label: 'Bestseller Rank' }
     ]
   },
   FieldGroup #Classification: {
     $Type: 'UI.FieldGroupType',
     Data: [
-      { $Type: 'UI.DataField', Value: author_ID },
-      { $Type: 'UI.DataField', Value: publisher_ID },
-      { $Type: 'UI.DataField', Value: category_ID },
-      { $Type: 'UI.DataField', Value: format_ID }
+      { $Type: 'UI.DataField', Value: author_ID, Label: 'Author' },
+      { $Type: 'UI.DataField', Value: publisher_ID, Label: 'Publisher' },
+      { $Type: 'UI.DataField', Value: category_ID, Label: 'Category' },
+      { $Type: 'UI.DataField', Value: format_ID, Label: 'Format' }
     ]
   },
   Facets: [
