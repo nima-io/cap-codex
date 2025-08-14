@@ -52,11 +52,11 @@ annotate AdminService.Books with @UI: {
     { Value: title }
   ],
   LineItem: [
-    { Value: ID },
     { Value: title },
     { Value: author, Label: 'Author' },
     { Value: price },
-    { Value: stock }
+    { Value: stock },
+    { Value: category, Label: 'Category' }
   ],
   FieldGroup #General: {
     $Type: 'UI.FieldGroupType',

@@ -1,0 +1,13 @@
+specVersion: '2.6'
+metadata:
+  name: books
+type: application
+framework:
+  name: SAPUI5
+  version: '1.120.0'
+  libraries:
+    - name: sap.m
+    - name: sap.fe.templates
+    - name: sap.ui.core
+    - name: sap.ui.table
+    - name: sap.uxap
