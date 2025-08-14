@@ -74,7 +74,6 @@ annotate AdminService.Authors with @UI: {
 };
 
 annotate AdminService.Books with {
-  author @UI.Hidden;
   author_ID @title: 'Author';
   author_ID @Common.Text: author.name;
   author_ID @Common.TextArrangement: #TextOnly;

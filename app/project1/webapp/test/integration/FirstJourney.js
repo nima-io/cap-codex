@@ -19,6 +19,15 @@ sap.ui.define([
                 Then.onTheBooksList.onTable().iCheckRows();
 
                 Then.waitFor({
+                    controlType: "sap.m.Label",
+                    matchers: new PropertyStrictEquals({ name: "text", value: "Author" }),
+                    success: function () {
+                        Opa5.assert.ok(true, "Author column present");
+                    },
+                    errorMessage: "Author column not found"
+                });
+
+                Then.waitFor({
                     controlType: "sap.m.Text",
                     matchers: new PropertyStrictEquals({ name: "text", value: "Primo Levi" }),
                     success: function () {
