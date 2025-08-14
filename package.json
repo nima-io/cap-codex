@@ -30,5 +30,8 @@
     "dev": "cds watch",
     "lint": "eslint .",
     "test": "npm run build && node --test test/*.test.js"
-  }
+  },
+  "sapux": [
+    "app/books"
+  ]
 }
