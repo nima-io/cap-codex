@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "project1",
+    "id": "books",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -9,7 +9,6 @@
     },
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
-    "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.17.0",
@@ -60,7 +59,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project1.i18n.i18n"
+          "bundleName": "books.i18n.i18n"
         }
       },
       "": {
@@ -102,6 +101,8 @@
           "options": {
             "settings": {
               "contextPath": "/Books",
+              "autoBindOnInit": true,
+              "initialLoad": true,
               "variantManagement": "Page",
               "navigation": {
                 "Books": {

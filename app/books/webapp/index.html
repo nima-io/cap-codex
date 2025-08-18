@@ -15,7 +15,7 @@
         src="https://sapui5.hana.ondemand.com/1.138.1/resources/sap-ui-core.js"
         data-sap-ui-theme="sap_horizon"
         data-sap-ui-resourceroots='{
-            "project1": "./"
+            "books": "./"
         }'
         data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
         data-sap-ui-compatVersion="edge"
@@ -24,7 +24,7 @@
     ></script>
     <script>
         window.addEventListener('load', function () {
-            var bundle = sap.ui.getCore().getLibraryResourceBundle('project1');
+            var bundle = sap.ui.getCore().getLibraryResourceBundle('books');
             document.title = bundle.getText('appTitle');
         });
     </script>
@@ -32,9 +32,9 @@
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div
         data-sap-ui-component
-        data-name="project1"
+        data-name="books"
         data-id="container"
-        data-settings='{"id" : "project1"}'
+        data-settings='{"id" : "books"}'
         data-handle-validation="true"
     ></div>
 </body>

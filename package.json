@@ -19,15 +19,19 @@
     "@types/express": "^4",
     "@types/node": "^22",
     "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "cds-plugin-ui5": "^0.13.4",
+    "eslint": "^8",
+    "@sap/cds-dk": "^9"
   },
   "scripts": {
     "build": "tsc",
     "start": "npm run build && cds-serve",
-    "test": "npm run build && node --test test/*.test.js",
-    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false"
+    "dev": "cds watch",
+    "lint": "eslint .",
+    "test": "npm run build && node --test test/*.test.js"
   },
   "sapux": [
-    "app/project1"
+    "app/books"
   ]
 }
